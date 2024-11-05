@@ -8,7 +8,9 @@ app = FastAPI()
 class QueryRequest(BaseModel):
     query: str
 
-
+@app.get("/test")
+async def test():
+    return "Test...🔥"
 @app.post("/query")
 async def query_graph(request: QueryRequest):
     try:
