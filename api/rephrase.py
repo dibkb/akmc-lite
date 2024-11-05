@@ -1,4 +1,4 @@
-from graph import llm
+from api.graph import llm
 
 def rephrase_query_for_schema(user_query):
     prompt = (

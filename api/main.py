@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from graph import chain  
-from rephrase import rephrase_query_for_schema
+from api.graph import chain  
+from api.rephrase import rephrase_query_for_schema
 import uvicorn
 app = FastAPI()
 
