@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from api.graph import chain  
+from fastapi.middleware.cors import CORSMiddleware
 from api.rephrase import rephrase_query_for_schema
 import uvicorn
 app = FastAPI()
@@ -11,6 +12,13 @@ class QueryRequest(BaseModel):
 @app.get("/test")
 async def test():
     return "Test...🔥"
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000","https://nlp-group35.vercel.app/"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 @app.post("/query")
 async def query_graph(request: QueryRequest):
     try:
