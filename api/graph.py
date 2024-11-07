@@ -2,9 +2,9 @@ import os
 from dotenv import load_dotenv
 from langchain_community.graphs import Neo4jGraph
 from langchain_groq import ChatGroq
+# from langchain_openai import ChatOpenAI
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain.chains import GraphCypherQAChain
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -21,6 +21,7 @@ graph = Neo4jGraph(
     password=neo4j_password,
 )
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama3-8b-8192")
+
 llm_transformer = LLMGraphTransformer(llm=llm)
 
 # Create the GraphCypherQAChain
